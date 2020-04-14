@@ -3,11 +3,6 @@ h1 {
     margin-bottom: 5vh;
 }
 
-header ul {
-    min-width: fit-content;
-    margin: 0 auto !important;
-}
-
 main {
     display: flex;
     align-content: center;
@@ -29,6 +24,15 @@ main {
 }
 
 #_dashboard {
-    display: grid;
-    width: auto;
+    width: auto;   
+}
+
+#_dashboard > div {
+    grid-template-columns: repeat(4, 70px) !important;
+}
+
+@media screen and (min-width: 630px) {
+    #_dashboard > div {
+        grid-template-columns: repeat(8, 70px) !important;
+    }
 }

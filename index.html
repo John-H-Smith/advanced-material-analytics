@@ -12,18 +12,19 @@
 
 
     <script src="lib/odata.js"></script>
-    <script src="scripts/main.js"></script>
     <script src="lib/metro.min.js"></script>
+    <script src="scripts/main.js"></script>
     <script src="scripts/index.js"></script>
 </head>
 
 <body>
     <header>
         <h1>Advanced Material Information</h1>
-        <ul data-role="tabs" data-on-tab="menu()" data-cls-tabs="flex-justify-center mt-2" data-expand="true">
+        <ul data-role="tabs" data-on-tab="menu()" data-cls-tabs="flex-justify-center mt-2" data-expand-point="sm">
             <li><a href="#_dashboard">Dashboard</a></li>
             <li><a href="#_statistics">Statistics</a></li>
             <li><a href="#_material-information" class="disabled">Material information</a></li>
+            <li><a href="#_locations" class="disabled">Locations</a></li>
             <li><a href="#_export" class="disabled">Export</a></li>
         </ul>
     </header>
@@ -31,7 +32,7 @@
         
         <!-- Dashboard -->
         <div id="_dashboard">
-            <div class="border bd-default no-border-top p-2 tiles-grid">
+            <div class="bd-default p-2 tiles-grid .size-10">
                 <div data-role="tile" data-size="medium" id="material-count">
                     <span class="data"></span>
                     <span class="branding-bar">Anzahl Materialien</span>
@@ -40,7 +41,7 @@
                     <span class="data"></span>
                     <span class="branding-bar">Aktive Artikel</span>
                 </div>
-                <div data-role="tile" data-size="wide" id="count-mattype" class="col-5 row-1">
+                <div data-role="tile" data-size="wide" id="count-mattype">
                     <span class="data"></span>
                     <span class="branding-bar">Materialien in Materialart</span>
                 </div>
@@ -48,7 +49,7 @@
                     <span class="data"></span>
                     <span class="branding-bar">Zu-/Abgänge im Monat</span>
                 </div>
-                <div data-role="tile" data-size="wide" id="most-used-transporttype" class="col-5 row-3">
+                <div data-role="tile" data-size="wide" id="most-used-transporttype">
                     <span class="data"></span>
                     <span class="branding-bar">Häufigster Transporttyp</span>
                 </div>
@@ -57,20 +58,27 @@
         
 
         <!-- Statistics -->
-        <div class="border bd-default no-border-top p-2" id="_statistics">
+        <div class="bd-default no-border-top p-2" id="_statistics">
             <div>
             Test
             </div>
         </div>
 
-        <div class="border bd-default no-border-top p-2" id="_material-information" style="width: 90%;">
+        <div class="bd-default p-2" id="_material-information" style="width: 90%;">
+            <div>
+            Kein Inhalt
+            </div>
+        </div>
+
+        <!-- Locations -->
+        <div class="bd-default no-border-top p-2" id="_locations">
             <div>
             Kein Inhalt
             </div>
         </div>
 
         <!-- Export -->
-        <div class="border bd-default no-border-top p-2" id="_export">
+        <div class="bd-default no-border-top p-2" id="_export">
             <div>
             Kein Inhalt
             </div>
