@@ -1,11 +1,6 @@
 "use strict";
-<<<<<<< HEAD
 g.u = "develop38";
-g.p = "develop38";
-=======
-g.u = "develop30";
-g.p = "";
->>>>>>> b645eec67790d60d600bd54cecb41b51b58030d9
+g.u = "develop38";
 g.abc;
 g.activ;
 g.valatm;
