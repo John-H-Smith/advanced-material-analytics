@@ -1,5 +1,4 @@
 "use strict";
-let g = {};
 g.u = "develop38";
 g.p = "develop38";
 g.abc;
@@ -9,14 +8,6 @@ g.urlabc2 = "https://ux5.edvschulen-plattling.de/sap/bc/bsp/sap/z030_pm_beisp/le
 g.urlabc = "http://i82lp1.informatik.tu-muenchen.de:8000/sap/opu/odata/sap/ZMITO_STATISTICS_SRV/ABC_ANLAYSISSET(1).json?sap-client=301";
 g.urlactiv;
 g.valatm;
-
-g.e = function (selektor) { return document.querySelector(selektor); };
-g.eAll = function (selektor) { return document.querySelectorAll(selektor); };
-
-var ready = (callback) => {
-    if (document.readyState != "loading") callback();
-    else document.addEventListener("DOMContentLoaded", callback);
-}
 
 ready(main);
 
