@@ -1,3 +1,19 @@
+h1 {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+header ul {
+    min-width: fit-content;
+    margin: 0 auto !important;
+}
+
+main {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 .tiles-grid > div {
     display: flex;
     align-items: center;
@@ -10,4 +26,9 @@
 
 .tiles-grid > div > .data {
     font-size: 7vh;
+}
+
+#_dashboard {
+    display: grid;
+    width: auto;
 }
