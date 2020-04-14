@@ -5,7 +5,7 @@ g.countTypeArticle = "CountTypeArticelSet";
 g.countMaterialMovement = "MaterialMovementSet(1)";
 g.mostUsedTransportType = "MostUsedTransportTypeSet";
 g.mand = "?sap-client=101";
-g.count = int(0);
+g.count = parseInt(0);
 g.id = [];
 g.u = "";
 g.p = "";
@@ -22,14 +22,14 @@ function main() {
 }
 
 function readIds() {
-    g.e("#klasse").each(e => {
+    g.e("#material-grid").forEach(e => {
         g.id.add(g.e("#" + e).attr('id'));
     });
 }
 
 function read(url) {
     $.ajax({
-        url: g.url + g.mand + "/?$format=json",
+        url: url + g.mand + "/?$format=json",
         headers: { "Authorization": "Basic " + btoa(g.u + ':' + g.p), 'X-CSRF-Token': 'FETCH' }
     }).then(showData(d), ajaxMistake).catch(mistake);
 }
