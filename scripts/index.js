@@ -1,11 +1,11 @@
-g.url = "https://i82lp1.informatik.tu-muenchen.de:8000/sap/opu/odata/sap/ZMITO_DASHBOARD_SRV/";
+g.url = "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_DASHBOARD_SRV/";
 g.countArticel = "CountArticleSet(1)";
 g.countActiveArticel = "CountActiveArticleSet(1)";
 g.countTypeArticle = "CountTypeArticelSet";
 g.countMaterialMovement = "MaterialMovementSet(1)";
 g.mostUsedTransportType = "MostUsedTransportTypeSet";
-g.mand = "?sap-client=101";
 g.count = parseInt(0);
+g.format = "/?$format=json"
 g.id = [];
 g.u = "";
 g.p = "";
@@ -22,16 +22,19 @@ function main() {
 }
 
 function readIds() {
-    g.e("#material-grid").forEach(e => {
-        g.id.add(g.e("#" + e).attr('id'));
+    g.eAll("#material-grid>div").forEach(e => {
+        g.id.push(e.id);
     });
 }
 
 function read(url) {
-    $.ajax({
-        url: url + g.mand + "/?$format=json",
-        headers: { "Authorization": "Basic " + btoa(g.u + ':' + g.p), 'X-CSRF-Token': 'FETCH' }
-    }).then(showData(d), ajaxMistake).catch(mistake);
+    g.headers.append('Authorization', 'Basic ' + btoa(g.u + ':' + g.p));
+    g.headers.append('X-CSRF-Token', 'FETCH');
+    g.get(url + g.format).then(d => {
+        console.log(d);
+        showData(d);
+        g.abc = d.d;
+    });
 }
 
 function showData(d) {
