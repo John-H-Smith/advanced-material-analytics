@@ -1,0 +1,13 @@
+.tiles-grid > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tiles-grid > div > .branding-bar {
+    text-align: center;
+}
+
+.tiles-grid > div > .data {
+    font-size: 7vh;
+}
