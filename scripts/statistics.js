@@ -1,6 +1,4 @@
 "use strict";
-g.u = "develop39";
-g.u = "test1234";
 g.abc;
 g.activ;
 g.valatm;
@@ -17,84 +15,117 @@ ready(main);
 
 
 function main() {
-    getAbc(g.urlabc);
-    getData(g.urlvalatm, g.valatm);
-    getData(g.urlactiv, g.activ);
-    showData(g.contabc);
+    //getData(g.urlabc, "abc");
+    getData(g.urlvalatm, "val");
+    getData(g.urlactiv, "activ");
+    //showData(g.contabc);
     //showData(g.contactiv);
     //showData(g.contvalatm);
     
 }
 
-
-function readData() {
-    $.ajax({url: x.url + "/?$format=json",
-        headers: {"Authorization": "Basic " + btoa(x.u + ':' + x.p), 'X-CSRF-Token': 'FETCH'}
-    }).then((d, s, xhr) => saveTeachers(d, s, xhr), ajaxMistake).catch(mistake);
-}
-
-function getData(url, save) {
-    //g.headers = {"Authorization": "Basic " + btoa(g.u + ':' + g.p), 'X-CSRF-Token': 'FETCH'};
-    g.headers.append('Authorization', 'Basic ' + btoa(g.u + ':' + g.p));
-    g.headers.append('X-CSRF-Token', 'FETCH');
-    g.get(url).then(d=>{
-        console.log(d);
-        save = d.d.results;
-    });
-}
-
-function getAbc(url){
+function getData(url, name) {
     //g.headers.append('Authorization', 'Basic ' + btoa(g.u + ':' + g.p));
     //g.headers.append('X-CSRF-Token', 'FETCH');
     g.get(url).then(d=>{
-        console.log(d);
-        g.abc = d.d;
-        console.log(g.valatm);
+        if(name == "val"){
+        g.valatm = d.d.results;
+        showDataValAtm(g.contvalatm);
+    }
+        if(name == "activ"){
+            g.activ = d.d.results;
+            console.log(g.activ);
+            showDataActive(g.contactiv);
+        }
+        if(name == "abc"){
+            g.abc = d.d;
+            console.log(g.abc);
+        }
     });
 }
 
-function showData(container){
-    var chart = new CanvasJS.Chart(container, {
+function showDataActive(){
+    let act = [];
+    let inact = [];
+    let day;
+    let month;
+    let year;
+    let dat;
+    //{ x: new Date(2017,6,24), y: 31 },
+    g.activ.forEach(e => {
+        day = e['DATUM'].split(".")[0];
+        month = e['DATUM'].split(".")[1];
+        year = e['DATUM'].split(".")[2];
+        dat = new Date(year,month,day);
+        act.push({x: dat, y: parseInt(e['ACTIVE'])});
+        inact.push({x: dat, y: parseInt(e['INACTIV'])});
+    });
+    console.log(act);
+    var chart = new CanvasJS.Chart(g.contactiv, {
         animationEnabled: true,
-        
         title:{
-            text:"Fortune 500 Companies by Country"
+            text: "Aktive Materialien über Zeit"
         },
-        axisX:{
-            interval: 1
+        axisX: {
+            valueFormatString: "DD MM YY"
         },
-        axisY2:{
-            interlacedColor: "rgba(1,77,101,.2)",
-            gridColor: "rgba(1,77,101,.1)",
-            title: "Number of Companies"
+        axisY: {
+            title: "Temperature (in °C)",
+            includeZero: false,
+            //suffix: " °C"
+        },
+        legend:{
+            cursor: "pointer",
+            fontSize: 16,
+            itemclick: "toggleDataSeries"
+        },
+        toolTip:{
+            shared: true
         },
         data: [{
-            type: "bar",
-            name: "companies",
-            axisYType: "secondary",
-            color: "#014D65",
-            dataPoints: [
-                { y: 3, label: "Sweden" },
-                { y: 7, label: "Taiwan" },
-                { y: 5, label: "Russia" },
-                { y: 9, label: "Spain" },
-                { y: 7, label: "Brazil" },
-                { y: 7, label: "India" },
-                { y: 9, label: "Italy" },
-                { y: 8, label: "Australia" },
-                { y: 11, label: "Canada" },
-                { y: 15, label: "South Korea" },
-                { y: 12, label: "Netherlands" },
-                { y: 15, label: "Switzerland" },
-                { y: 25, label: "Britain" },
-                { y: 28, label: "Germany" },
-                { y: 29, label: "France" },
-                { y: 52, label: "Japan" },
-                { y: 103, label: "China" },
-                { y: 134, label: "US" }
-            ]
+            name: "Aktives Material",
+            type: "spline",
+            //yValueFormatString: "#0.## °C",
+            showInLegend: true,
+            dataPoints: act
+        },
+        {
+            name: "Inaktives Material",
+            type: "spline",
+            //yValueFormatString: "#0.## °C",
+            showInLegend: true,
+            dataPoints: inact
         }]
     });
+    chart.render();
+    console.log("ok");
+}
+
+function showDataValAtm(){
+    let ar = [];
+    g.valatm.forEach(e => {
+        ar.push({y: e['VALUE'], label: e['STORAGE']});
+    });
+    var chart = new CanvasJS.Chart(g.contvalatm, {
+        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+            text: "Aktueller Warenwert in Lagerorten"
+        },
+        data: [{
+            type: "pie",
+            startAngle: 25,
+            toolTipContent: "<b>{label}</b>: {y}%",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabelFontSize: 16,
+            indexLabel: "{label} - {y}%",
+            dataPoints: ar,
+        }]
+    });
+ 
+
     chart.render();
 }
 
