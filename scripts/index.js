@@ -7,8 +7,6 @@ g.mostUsedTransportType = "MostUsedTransportTypeSet";
 g.count = parseInt(0);
 g.format = "/?$format=json"
 g.id = [];
-g.u = "";
-g.p = "";
 
 ready(main);
 
@@ -28,12 +26,10 @@ function readIds() {
 }
 
 function read(url) {
-    g.headers.append('Authorization', 'Basic ' + btoa(g.u + ':' + g.p));
-    g.headers.append('X-CSRF-Token', 'FETCH');
+
     g.get(url + g.format).then(d => {
         console.log(d);
         showData(d);
-        g.abc = d.d;
     });
 }
 
