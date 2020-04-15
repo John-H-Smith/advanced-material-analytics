@@ -20,23 +20,33 @@ function main() {
 }
 
 function readIds() {
-    g.eAll("#material-grid>div").forEach(e => {
+    console.log("readIds()");
+    g.eAll("#_dashboard>div>div").forEach(e => {
+        console.log(e.id);
         g.id.push(e.id);
     });
 }
 
 function read(url) {
-
+    g.count += parseInt(1);
+    let count = g.count;
+    let id = g.id[g.count];
     g.get(url + g.format).then(d => {
         console.log(d);
-        showData(d);
+        showData(d, id, count);
     });
 }
 
-function showData(d) {
-    let tile = g.e("#" + g.id[g.count]);
-    tile.innerHTML = d.d.results;
-    g.count += 1;
+function showData(d, id, count) {
+    let tile = g.e("#" + id);
+    console.log(d);
+    if (count < 2) {
+        tile.innerHTML += d.d.count;
+    } else if (count == 2) {
+        d.d.results.forEach(e => {
+            tile.innerHTML += e.bezeichnung + ": " + e.count + "<br>";
+        });
+    }
 }
 
 function ajaxMistake() {
