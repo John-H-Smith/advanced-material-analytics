@@ -46,7 +46,19 @@ function showData(d, id, count) {
         d.d.results.forEach(e => {
             tile.innerHTML += e.bezeichnung + ": " + e.count + "<br>";
         });
+    } else if (count == 3) {
+        console.log(d);
+        tile.innerHTML += "Zugänge gesamt " + d.d.INLETAVERAGE + "<br>";
+        tile.innerHTML += "Abgänge gesamt " + d.d.OUTFLOWAVERAGE;
+
+    } else if (count == 4) {
+        console.log(d);
+        d.d.results.forEach(e => {
+            tile.innerHTML += "Verwendungen: " + e.TRANSACTION_COUNT + "<br>" +
+                e.DESCRIPTION;
+        });
     }
+
 }
 
 function ajaxMistake() {
