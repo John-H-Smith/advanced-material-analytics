@@ -4,7 +4,7 @@ g.countActiveArticel = "CountActiveArticleSet(1)";
 g.countTypeArticle = "CountTypeArticelSet";
 g.countMaterialMovement = "MaterialMovementSet(1)";
 g.mostUsedTransportType = "MostUsedTransportTypeSet";
-g.count = parseInt(0);
+g.count = parseInt(-1);
 g.format = "/?$format=json"
 g.id = [];
 
@@ -48,8 +48,7 @@ function showData(d, id, count) {
         });
     } else if (count == 3) {
         console.log(d);
-        tile.innerHTML += "Zugänge gesamt " + d.d.INLETAVERAGE + "<br>";
-        tile.innerHTML += "Abgänge gesamt " + d.d.OUTFLOWAVERAGE;
+        tile.innerHTML += "Bestandsveränderungen gesamt: " + d.d.INLETAVERAGE + "<br>";
 
     } else if (count == 4) {
         console.log(d);
