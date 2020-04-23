@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,26 @@
 
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="styles/statistics.css">
-    
-    <script src=lib/canvasjs.min.js></script>
+    <script src=lib/Chart.min.js>
+    </script>
     <script src="lib/odata.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/statistics.js"></script>
 </head>
+
 <body>
-    <div class="statistics" id="abc-analysis"></div>
-    <div class="statistics" id="active-materials"></div>
-    <div class="statistics" id="matart-count"></div>
+    <div class="abc" style="width: 75%">
+        <canvas class="statistics" id="abc-analysis"></canvas>
+    </div>
+    <br>
+    <div class="val" style="width: 40%">
+        <canvas class="statistics" id="storage-values" width="400" height="400"></canvas>
+    </div>
+    <br>
+    <div class="val" style="width: 85%">
+        <canvas class="statistics" id="active-materials"></canvas>
+    </div>
+
 </body>
+
 </html>
