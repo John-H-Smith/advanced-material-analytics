@@ -5,6 +5,7 @@ g.valatm;
 g.urlabc = "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_STATISTICS_SRV/ABC_ANLAYSISSET(1)" + "/?$format=json";
 g.urlactiv = "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_STATISTICS_SRV/Activ_Inactiv_material_over_time" + "/?$format=json";
 g.urlvalatm = "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_STATISTICS_SRV/STORAGE_TIME_WORTHSET" + "/?$format=json";
+
 g.contabc = "abc-analysis";
 g.contactiv = "active-materials";
 g.contvalatm = "matart-count";
@@ -53,24 +54,23 @@ function showDataActive(){
     let dat;
     //{ x: new Date(2017,6,24), y: 31 },
     g.activ.forEach(e => {
-        day = e['DATUM'].split(".")[0];
-        month = e['DATUM'].split(".")[1];
-        year = e['DATUM'].split(".")[2];
+        day = e['DATUM'].slice(6,8);
+        month = e['DATUM'].slice(4,6);
+        year = e['DATUM'].slice(0,4);
         dat = new Date(year,month,day);
         act.push({x: dat, y: parseInt(e['ACTIVE'])});
         inact.push({x: dat, y: parseInt(e['INACTIV'])});
     });
-    console.log(act);
     var chart = new CanvasJS.Chart(g.contactiv, {
         animationEnabled: true,
         title:{
-            text: "Aktive Materialien über Zeit"
+            text: "Active/Inactive Materialien über Zeit"
         },
         axisX: {
-            valueFormatString: "DD MM YY"
+            valueFormatString: "DD MM YYYY"
         },
         axisY: {
-            title: "Temperature (in °C)",
+            title: "Anzahl in Stück",
             includeZero: false,
             //suffix: " °C"
         },
@@ -98,7 +98,6 @@ function showDataActive(){
         }]
     });
     chart.render();
-    console.log("ok");
 }
 
 function showDataValAtm(){
@@ -107,7 +106,7 @@ function showDataValAtm(){
         ar.push({y: e['VALUE'], label: e['STORAGE']});
     });
     var chart = new CanvasJS.Chart(g.contvalatm, {
-        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        theme: "light1",
         exportEnabled: true,
         animationEnabled: true,
         title: {
@@ -116,11 +115,11 @@ function showDataValAtm(){
         data: [{
             type: "pie",
             startAngle: 25,
-            toolTipContent: "<b>{label}</b>: {y}%",
+            toolTipContent: "<b>{label}</b>: {y}",
             showInLegend: "true",
             legendText: "{label}",
             indexLabelFontSize: 16,
-            indexLabel: "{label} - {y}%",
+            indexLabel: "{label}: {y} €",
             dataPoints: ar,
         }]
     });
