@@ -12,9 +12,11 @@ header {
 }
 
 header h1 {
+    text-align: center;
     margin-top: 0px;
     color: white;
     padding-top: 3vh;
+    margin-bottom: 5vh;
 }
 
 header ul {
@@ -38,7 +40,7 @@ header ul > li.active {
     color: #1ba1e2 !important;
 }
 
-header ul > li.active > a:not(.disabled) {
+header ul > li.active > a:not(.disabled), header ul > li:active > a:not(.disabled)  {
     color: #1ba1e2 !important;
 }
 
