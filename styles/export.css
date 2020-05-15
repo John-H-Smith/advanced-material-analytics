@@ -1,0 +1,42 @@
+body {
+    overflow-x: auto;
+}
+
+main {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+table {
+    margin: 0 auto;
+    margin-bottom: 5vh;
+}
+
+table td, table th {
+    border: 1px solid white;
+    padding: 5px;
+}
+
+table td {
+    padding: 5px;
+}
+
+table th {
+    background: #1ba1e2;
+    vertical-align: middle;
+}
+
+table tr:hover {
+    background: #1ba0e234;
+}
+
+#createExcel {
+    width: 100vw;
+}
+
+@media screen and (min-width: 630px) {
+    #createExcel {
+        width: min-content;
+        margin: 0 auto;
+    }
+}
