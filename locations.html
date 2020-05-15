@@ -8,13 +8,13 @@
 
     <link rel="stylesheet" href="lib/metro-all.min.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="styles/statistics.css">
-    <script src=lib/Chart.min.js></script>
+    <link rel="stylesheet" type="text/css" href="styles/locations.css">
 
+    <script src=lib/Chart.min.js></script>
     <script src="lib/odata.js"></script>
     <script src="lib/metro.min.js"></script>
     <script src="scripts/main.js"></script>
-    <script src="scripts/statistics.js"></script>
+    <script src="scripts/locations.js"></script>
 </head>
 
 <body>
@@ -22,25 +22,17 @@
         <h1>Advanced Material Information</h1>
         <ul data-role="tabs" data-on-tab="" data-cls-tabs="flex-justify-center mt-2" data-expand-point="sm">
             <li><a href="index.html">Dashboard</a></li>
-            <li class="active"><a href="#">Statistics</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
             <li><a href="material-information.html">Material information</a></li>
-            <li><a href="locations.html">Locations</a></li>
+            <li  class="active"><a href="locations.html">Locations</a></li>
             <li><a href="export.html">Export</a></li>
         </ul>
     </header>
     <main>
-        <div class="abc" style="width: 75%">
-            <canvas class="statistics" id="abc-analysis"></canvas>
-        </div>
-        <br>
-        <div class="val" style="width: 40%">
-            <canvas class="statistics" id="storage-values" width="400" height="400"></canvas>
-        </div>
-        <br>
-        <div class="val" style="width: 85%">
-            <canvas class="statistics" id="active-materials"></canvas>
-        </div>
+            <span id="_mapTitle"></span>
+            <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=12.859733104705812%2C48.767433799494015%2C12.88773536682129%2C48.77683809143874&amp;layer=mapnik&amp;marker=48.77212909475592%2C12.87374496459961"
+                style="border: 1px solid black"></iframe><br /><small><a
+                    href="https://www.openstreetmap.org/?mlat=48.7721&amp;mlon=12.8737#map=16/48.7721/12.8737"></a></small>
     </main>
-</body>
 
-</html>
+</body>
