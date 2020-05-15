@@ -1,0 +1,38 @@
+#filter {
+    border-bottom: 1px solid black;
+    padding: 2vh;
+    margin-bottom: 5vh;
+}
+
+#selection {
+    border-right: 1px solid black;
+    padding: 5vh;
+}
+
+#selection > select {
+    width: auto;
+    -webkit-appearance: button;
+}
+
+main {
+    display: grid;
+    grid-template-columns: min-content auto;
+    padding: 5vh;
+}
+
+#matinfo {
+    display: grid;
+    grid-template-columns: max-content auto;
+    color: white;
+    align-items: center;
+    padding: 5vh;
+}
+
+.label {
+    padding: 10px;
+    align-self: center;
+}
+
+p, span:not(p > span) {
+    padding-left: 10px;
+}
