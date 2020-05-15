@@ -28,6 +28,20 @@ main {
     padding: 5vh;
 }
 
+#matinfo > p {
+    margin: 0px;
+}
+
+#matinfo > * {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#matinfo > *:not(:nth-child(11)):not(:nth-child(12)):not(:nth-child(13)):not(:nth-child(14)) {
+    border-bottom: 1px solid white;
+}
+
 .label {
     padding: 10px;
     align-self: center;
@@ -35,4 +49,17 @@ main {
 
 p, span:not(p > span) {
     padding-left: 10px;
+}
+
+.notice-parts {
+    display: flex;
+}
+
+#notice {
+    height: 100%;
+}
+
+#btn {
+    margin-left: 20px;
+    background: #1ba1e2 !important;
 }
