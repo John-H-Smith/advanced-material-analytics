@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Document</title>
 
+    <link rel="stylesheet" href="styles/export.css">
     <link rel="stylesheet" href="lib/metro-all.min.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="styles/statistics.css">
+    <link rel="stylesheet" href="styles/export.css">
     <script src=lib/Chart.min.js>
     </script>
     <script src="lib/odata.js"></script>
@@ -32,24 +33,27 @@
     </header>
 
     <body>
-        <table border="1">
-            <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Einheit</th>
-                <th>Materialart</th>
-                <th>Kuerzel</th>
-                <th>Gueltig von</th>
-                <th>Gueltig bis</th>
-                <th>Gewicht</th>
-                <th>Gewichteinheit</th>
-                <th>Einheitspreis</th>
-                <th>Waehrung</th>
-            </thead>
-            <tbody id="tab"></tbody>
-        </table>
-        <button id="createExcel">Erstelle Excelfile</button>
-
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Einheit</th>
+                        <th>Materialart</th>
+                        <th>Kürzel</th>
+                        <th>Gueltig von</th>
+                        <th>Gueltig bis</th>
+                        <th>Gewicht</th>
+                        <th>Gewichteinheit</th>
+                        <th>Einheitspreis</th>
+                        <th>Währung</th>
+                    </tr>
+                </thead>
+                <tbody id="tab"></tbody>
+            </table>
+            <button id="createExcel" class="button primary large">Für Excel exportieren</button>
+        </main>
     </body>
 
 </body>
