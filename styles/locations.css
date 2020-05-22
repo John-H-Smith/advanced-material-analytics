@@ -1,7 +1,28 @@
-#_mapTitle {
+main {
+    width: 100vw;
+    align-items: center;
     color: white;
 }
 
-main {
+iframe {
+    width: 100%;
+}
+
+.mapTitle {
     text-align: center;
+}
+
+
+@media screen and (min-width: 630px) {
+    main {
+        width: max-content;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1vw;
+        margin: 0 auto;
+    }
+
+    iframe {
+        width: 35vw;
+    }
 }
