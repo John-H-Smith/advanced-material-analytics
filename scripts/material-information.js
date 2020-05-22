@@ -3,7 +3,15 @@ ready(main);
 let newNotitz = true;
 let aktID = -1;
 
+
 function main() {
+
+    if(screen.width <= 630 ) {
+        g.e( '.noticeParts' ).innerHTML = "<textarea id='notice'></textarea>";
+       g.e( '#matinfo' ).innerHTML += '<button id="btn" class="shortcut"><span class="caption fg-white">Speichern</span><span class="mif-floppy-disk icon fg-white"></span></button>';
+    } else {
+g.e( '.noticeParts' ).innerHTML = '<textarea id="notice"></textarea><button id="btn" class="shortcut"><span class="caption fg-white">Speichern</span><span class="mif-floppy-disk icon fg-white"></span></button>';
+}
 
     g.temp = g.e('#matinfo').innerHTML;
     g.e('#matinfo').innerHTML = 'Bitte Material auswählen!';
@@ -64,40 +72,51 @@ function loadMaterial(id) {
         g.e('#validfrom').innerHTML = mat.GUELTIGVON;
         g.e('#validuntil').innerHTML = mat.GUELTIGBIS;
         g.e("#btn").addEventListener('click', saveNotitz);
-        //g.e("#btn").addEventListener('click', deleteNotitz);
+        console.log(id);
+        g.get(
+            "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_pic_set(" + id + ")?$expand=HeadToItemNav&$format=json"
+        ).then(data => {console.log(data); g.e( '#materialimage' ).src = data.d.PICTURE; });
+        /*if( g.e( '#materialimage' ).src == "undefined" ) {
+            g.e( '#materialimage' ).style.display = 'none';
+        } else {
+            g.e( '#materialimage' ).style.display = 'block';
+        }*/
+
     });
 }
 
 function saveNotitz() {
-    let matid = getID();
+    let matid = parseInt(getID());
     if (matid) {
         let notiz = g.e("#notice").value;
+        selectPic();
         if (newNotitz) {
             g.post(
-                "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set()",
-                {NOTITZ: notiz}
+                "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
+                {NOTITZ: notiz,
+                MID: matid}
             )
             newNotitz = false;
         }
         else {
+            if(notiz == ""){
+                g.delete(
+                    "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
+                    aktID
+                )
+            } else {
             g.put(
                 "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
                 aktID,
-                {NOTITZ: notiz}
+                {NOTITZ: notiz,
+                MID: matid,
+                ID: aktID}
             )
+                }
         }
     }
 }
 
-function deleteNotitz() {
-    let matid = getID();
-    if (matid) {
-        g.delete(
-            "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set(" + aktID + ")"
-        )
-        g.e("#notice").innerHTML="";
-    }
-}
 
 function getID() {
     let select = g.e("#material-dropdown");
@@ -106,4 +125,43 @@ function getID() {
         let matid = name.split(" ")[0];
         return matid;
     }
+}
+
+async function selectPic() {
+    let file = g.e( '#image' ).files[0];
+    /*var filesize = ( ( files[ x ].size / 1024 ) / 1024 ).toFixed(4);    //Convert to mibibytes
+    if( filesize > 5 ) {
+        alert("Bild zu groß! Bitte maximal 5 MiB verwenden.");
+        return;
+    }*/
+    file = await toBase64(file).catch(e => Error(e));
+    if(file instanceof Error) {
+        console.log('Error: ', file.message);
+        return;
+    }
+    uploadPic(file);
+}
+
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+
+});
+    
+
+
+function uploadPic(pic) {
+    let matid = parseInt(getID());
+    if (matid) {
+        g.post(
+            "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_pic_set",
+                {PICTURE:  pic ,
+                MID: matid,
+                ID: 4
+                }
+        )
+       g.e( '#materialimage' ).src = pic;
+                }
 }
