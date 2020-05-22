@@ -72,3 +72,18 @@ p, span:not(p > span) {
 .info:hover {
     background: #1ba1e2 !important;
 }
+
+input[type='file'] {
+    border: none;
+    width: auto;
+    display: none;
+    margin: 0px;
+}
+
+label[for='image'] {
+    border: 1px solid #1ba1e2;
+    border-radius: 10px;
+    padding: 2vh;
+    width: max-content;
+    display: block;
+}
