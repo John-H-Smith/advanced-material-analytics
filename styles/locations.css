@@ -10,6 +10,13 @@ iframe {
 
 .mapTitle {
     text-align: center;
+    margin-top: 0px;
+    padding-bottom: 4vh;
+    border-bottom: 1px solid silver;
+}
+
+iframe:not(:first-child) {
+    margin-top: 4vh;
 }
 
 
@@ -24,5 +31,12 @@ iframe {
 
     iframe {
         width: 35vw;
+        margin: 0px;
+    }
+
+    .mapTitle {
+        text-align: left;
+        margin-bottom: 0;
+        border: none;
     }
 }
