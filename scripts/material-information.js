@@ -5,14 +5,14 @@ let aktID = -1;
 
 
 function main() {
-/*
-    if (screen.width <= 630) {
-        g.e('.noticeParts').innerHTML = "<textarea id='notice'></textarea>";
-        g.e('#matinfo').innerHTML += '<button id="btn" class="shortcut"><span class="caption fg-white">Speichern</span><span class="mif-floppy-disk icon fg-white"></span></button>';
-    } else {
-        g.e('.noticeParts').innerHTML = '<textarea id="notice"></textarea><button id="btn" class="shortcut"><span class="caption fg-white">Speichern</span><span class="mif-floppy-disk icon fg-white"></span></button>';
-    }
-*/
+    /*
+        if (screen.width <= 630) {
+            g.e('.noticeParts').innerHTML = "<textarea id='notice'></textarea>";
+            g.e('#matinfo').innerHTML += '<button id="btn" class="shortcut"><span class="caption fg-white">Speichern</span><span class="mif-floppy-disk icon fg-white"></span></button>';
+        } else {
+            g.e('.noticeParts').innerHTML = '<textarea id="notice"></textarea><button id="btn" class="shortcut"><span class="caption fg-white">Speichern</span><span class="mif-floppy-disk icon fg-white"></span></button>';
+        }
+    */
     g.temp = g.e('#matinfo').innerHTML;
     g.e('#matinfo').innerHTML = 'Bitte Material auswählen!';
 
@@ -74,8 +74,11 @@ function loadMaterial(id) {
         g.e("#btn").addEventListener('click', saveNotitz);
         console.log(id);
         g.get(
-            "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_pic_set(" + "MID="+parseInt(id)+",ID="+parseInt(aktID) + ")?$expand=HeadToItemNav&$format=json"
-        ).then(data => { console.log(data); g.e('#materialimage').src = data.d.PICTURE; });
+            "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_pic_set(" + "MID=" + parseInt(id) + ",ID=" + parseInt(aktID) + ")?$expand=HeadToItemNav&$format=json"
+        ).then(data => {
+            console.log(data);
+            g.e('#materialimage').src = data.d.PICTURE;
+        });
         /*if( g.e( '#materialimage' ).src == "undefined" ) {
             g.e( '#materialimage' ).style.display = 'none';
         } else {
@@ -89,34 +92,27 @@ function saveNotitz() {
     let matid = parseInt(getID());
     if (matid) {
         let notiz = g.e("#notice").value;
-        selectPic();
+
+        //selectPic();
         if (newNotitz) {
             g.post(
-                "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
-                {
+                "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set", {
                     NOTITZ: notiz,
                     MID: matid
                 }
             )
             newNotitz = false;
-        }
-        else {
-            if (notiz == "") {
-                g.delete(
-                    "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
-                    aktID
-                )
-            } else {
-                g.put(
-                    "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
-                    aktID,
-                    {
-                        NOTITZ: notiz,
-                        MID: matid,
-                        ID: aktID
-                    }
-                )
-            }
+        } else {
+
+            g.put(
+                "https://ux5.edvschulen-plattling.de/sap/opu/odata/sap/ZMITO_MAT_INFO_SRV/material_note_set",
+                aktID, {
+                    NOTITZ: notiz,
+                    MID: matid,
+                    ID: aktID
+                }
+
+            )
         }
     }
 }
@@ -130,14 +126,14 @@ function getID() {
         return matid;
     }
 }
-
+/*
 async function selectPic() {
     let file = g.e('#image').files[0];
-    /*var filesize = ( ( files[ x ].size / 1024 ) / 1024 ).toFixed(4);    //Convert to mibibytes
+    var filesize = ( ( files[ x ].size / 1024 ) / 1024 ).toFixed(4);    //Convert to mibibytes
     if( filesize > 5 ) {
         alert("Bild zu groß! Bitte maximal 5 MiB verwenden.");
         return;
-    }*/
+    }
     file = await toBase64(file);
     if (file instanceof Error) {
         console.log('Error: ', file.message);
@@ -184,3 +180,4 @@ function uploadPic(pic) {
         g.e('#materialimage').src = pic;
     }
 }
+*/
