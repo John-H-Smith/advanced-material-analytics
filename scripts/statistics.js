@@ -35,11 +35,11 @@ function getData(url, name) {
         if (name == "activ") {
             g.activ = d.d.results;
             console.log(g.activ);
-            createDataActive(g.contactiv);
+            createDataActive();
         }
         if (name == "val") {
             g.valatm = d.d.results;
-            createDataValAtm(g.contvalatm);
+            createDataValAtm();
         }
 
     });
@@ -67,8 +67,8 @@ function createDataValAtm() {
                 label: 'Dataset 1'
             }],
             labels: [
-                ar[1].label,
-                ar[0].label
+                ar[1].label.substring(0, 1) + ar[1].label.substring(1, ar[1].label.length).toLowerCase() + " €",
+                ar[0].label.substring(0, 1) + ar[0].label.substring(1, ar[0].label.length).toLowerCase() + " €"
             ]
         },
         options: {
@@ -87,10 +87,10 @@ function createDataValAtm() {
 
 function createAbcChart() {
     var chartData = {
-        labels: ["A " + g.abc.COUNT_A, "B " + g.abc.COUNT_B, "C " + g.abc.COUNT_C],
+        labels: ["A " + g.abc.COUNT_A + " St.", "B " + g.abc.COUNT_B + " St.", "C " + g.abc.COUNT_C + " St."],
         datasets: [{
             type: 'line',
-            label: 'Summiert',
+            label: 'Summiert €',
             borderColor: g.chartColors.blue,
             borderWidth: 2,
             fill: false,
@@ -98,10 +98,11 @@ function createAbcChart() {
                 g.abc.VALUE_A,
                 (g.abc.VALUE_A + g.abc.VALUE_B),
                 (g.abc.VALUE_A + g.abc.VALUE_B + g.abc.VALUE_C)
+
             ]
         }, {
             type: 'bar',
-            label: '',
+            label: 'Kategorie €',
             backgroundColor: g.chartColors.orange,
             data: [
                 g.abc.VALUE_A,
@@ -148,15 +149,17 @@ function createDataActive() {
     let year;
     let dat;
 
+
     g.activ.forEach(e => {
         day = e['DATUM'].slice(6, 8);
         month = e['DATUM'].slice(4, 6);
         year = e['DATUM'].slice(0, 4);
         dat = new Date(year, month, day);
-        act.push(parseInt(e['ACTIVE']));
-        actDat.push(month + "/" + year);
-        inact.push(parseInt(e['INACTIV']));
-
+        if (dat <= new Date()) {
+            act.push(parseInt(e['ACTIVE']));
+            actDat.push(month + "/" + year);
+            inact.push(parseInt(e['INACTIV']));
+        }
     });
 
     var config = {
@@ -189,7 +192,7 @@ function createDataActive() {
             },
             hover: {
                 mode: 'nearest',
-                intersect: true
+                intersect: true,
             },
             scales: {
                 xAxes: [{

@@ -44,7 +44,7 @@ function showData(d, id, count) {
         tile.innerHTML += d.d.count;
     } else if (count == 2) {
         d.d.results.forEach(e => {
-            tile.innerHTML += e.bezeichnung + ": " + e.count + "<br>";
+            tile.innerHTML += e.bezeichnung.substring(0, 1) + e.bezeichnung.substring(1, e.length).toLowerCase() + ": " + e.count + "<br>";
         });
     } else if (count == 3) {
         console.log(d);
