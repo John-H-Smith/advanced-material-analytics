@@ -57,9 +57,9 @@ License
 Please consult the LICENSE file for details.
 License files for the used free libraries can be found in the lib directory.
 
- - Chart.js [License](lib/Chart.js-license)
- - FileSaver.js [License](lib/FileSaver.js-license)
- - Metro [License](lib/metro-license)
- - xlsx [License](lib/xlsx-license)
+ - Chart.js [License](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md)
+ - FileSaver.js [License](https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md)
+ - Metro [License](https://github.com/olton/Metro-UI-CSS/blob/master/LICENSE)
+ - xlsx [License](https://github.com/SheetJS/sheetjs/blob/master/LICENSE)
 
  
