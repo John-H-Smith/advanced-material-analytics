@@ -47,12 +47,12 @@ The SAP side backend has the following table content
  - Stock
 
 The communication between front end and back end is realized with ODATA REST.
- - [relations model](https://github.com/John-H-Smith/advanced-material-analytics/blob/development/exampleImg/TableDB.jpg)
+ - [Relation_model](https://github.com/John-H-Smith/advanced-material-analytics/blob/development/exampleImg/TableDB.jpg)
 Please notice that the table ZMITO_UEBERSETZUNG (translation) is not in use.
 
 About this project
 ------
-This web application was developed as it-school project in germany and tested with the Chrome browser.
+This web application was developed as it-school project in Germany and tested with the Chrome browser.
 
 License
 ------
