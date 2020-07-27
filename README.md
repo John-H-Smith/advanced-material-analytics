@@ -9,25 +9,25 @@ The advanced material analytics are used to
 
  - View a overview of some data
  
-  ![diagram](exampleImg/Dashboard.png)
+  ![dashboard](exampleImg/Dashboard.png)
  - View some statistics of the data
  
-  ![diagram](exampleImg/Statistics1.png)
+  ![statistics1](exampleImg/Statistics1.png)
  
-  ![diagram](exampleImg/Statistics2.png)
+  ![statistics2](exampleImg/Statistics2.png)
  
-  ![diagram](exampleImg/Statistics3.png)
+  ![statistics3](exampleImg/Statistics3.png)
  - View all materials in detail and add/edit material notes
  
-  ![diagram](exampleImg/MaterialInformation.png)
+  ![material_information](exampleImg/MaterialInformation.png)
  - View all factories on map and show addresses
  
-  ![diagram](exampleImg/Locations.png)
+  ![locations](exampleImg/Locations.png)
  - View all material data as table and export all materials to .xlsx (MS Excel) file
  
-  ![diagram](exampleImg/Export1.png)
+  ![export1](exampleImg/Export1.png)
  
-  ![diagram](exampleImg/Export2.png)
+  ![export2](exampleImg/Export2.png)
 
 Backend
 ------
@@ -47,10 +47,12 @@ The SAP side backend has the following table content
  - Stock
 
 The communication between front end and back end is realized with ODATA REST.
+[relations model](exampleImg/TableDB.png)
+Please notice that the table ZMITO_UEBERSETZUNG (translation) is not in use.
 
 About this project
 ------
-This web application was developed as it-school project and tested with the Chrome browser.
+This web application was developed as it-school project in germany and tested with the Chrome browser.
 
 License
 ------
