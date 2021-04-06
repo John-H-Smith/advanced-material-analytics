@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="lib/metro-all.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/material-information.css">
+    
+    <script src="lib/odata.js"></script>
+    <script src="lib/metro.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/material-information.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Advanced Material Information</h1>
+        <ul data-role="tabs" data-on-tab="" data-cls-tabs="flex-justify-center mt-2" data-expand-point="sm">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li class="active"><a href="material-information.html">Material information</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="export.html">Export</a></li>
+        </ul>
+    </header>
+
+    <div id="filter">
+        <input id="id1" placeholder="ID" />
+        <button id="search" class="button info outline">Suchen</button>
+    </div>
+
+    <main>
+
+            <aside id="selection">
+                    <select id="material-dropdown">
+                        <option>-- Bitte auswählen --</option>
+                    </select>
+                    <img id="materialimage" src="" alt="Materialbild" />
+                    <label for='image'><input type='file' id='image' required />Bild hochladen</label>
+            </aside>
+            
+        
+            <div id="matinfo">
+        
+                <span class="label">ID:</span>
+                <span id="id0"></span>
+        
+                <span class="label">Kürzel:</span>
+                <span id="shortcode"></span>
+        
+                <span class="label">Artikel:</span>
+                <span id="article"></span>
+        
+                <span class="label">Preis:</span>
+                <p>
+                    <span id="unitprice"></span>&nbsp;<span id="currency"></span>&nbsp;pro&nbsp;<span id="unit"></span>
+                </p>
+        
+                <span class="label">Gewicht:</span>
+                <p>
+                    <span id="weight"></span>&nbsp;<span id="weightunit"></span>
+                </p>
+        
+                <span class="label">Gültig:</span>
+                <p>
+                    von&nbsp;<span id="validfrom"></span>&nbsp;bis&nbsp;<span id="validuntil"></span>
+                </p>
+                <span class="label">Notiz:</span>
+                <p class="notice-parts">
+                    <textarea id="notice"></textarea>
+                    <button id="btn" class="shortcut">
+                        <span class="caption fg-white">Speichern</span>
+                        <span class="mif-floppy-disk icon fg-white"></span>
+                    </button>
+                </p>                
+            </div>
+
+    </main>
+
+    
+</body>
+</html>

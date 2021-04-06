@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles/export.css">
+    <link rel="stylesheet" href="lib/metro-all.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" href="styles/export.css">
+    <script src=lib/Chart.min.js>
+    </script>
+    <script src="lib/odata.js"></script>
+    <script src="lib/metro.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="lib/xlsx.mini.js"></script>
+    <script src="lib/FileSaver.js"></script>
+    <script src="scripts/export.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Advanced Material Information</h1>
+        <ul data-role="tabs" data-on-tab="" data-cls-tabs="flex-justify-center mt-2" data-expand-point="sm">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="material-information.html">Material information</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li class="active"><a href="export.html">Export</a></li>
+        </ul>
+    </header>
+
+    <body>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Einheit</th>
+                        <th>Materialart</th>
+                        <th>Kürzel</th>
+                        <th>Gueltig von</th>
+                        <th>Gueltig bis</th>
+                        <th>Gewicht</th>
+                        <th>Gewichteinheit</th>
+                        <th>Einheitspreis</th>
+                        <th>Währung</th>
+                    </tr>
+                </thead>
+                <tbody id="tab"></tbody>
+            </table>
+            <button id="createExcel" class="button primary large">Für Excel exportieren</button>
+        </main>
+    </body>
+
+</body>

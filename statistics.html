@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="lib/metro-all.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/statistics.css">
+    <script src=lib/Chart.min.js></script>
+
+    <script src="lib/odata.js"></script>
+    <script src="lib/metro.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/statistics.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Advanced Material Information</h1>
+        <ul data-role="tabs" data-on-tab="" data-cls-tabs="flex-justify-center mt-2" data-expand-point="sm">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active"><a href="#">Statistics</a></li>
+            <li><a href="material-information.html">Material information</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="export.html">Export</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="abc">
+            <canvas class="statistics" id="abc-analysis"></canvas>
+        </div>
+        <br>
+        <div class="val">
+            <canvas class="statistics" id="storage-values" width="400" height="400"></canvas>
+        </div>
+        <br>
+        <div class="val">
+            <canvas class="statistics" id="active-materials"></canvas>
+        </div>
+    </main>
+</body>
+
+</html>

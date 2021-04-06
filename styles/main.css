@@ -1,0 +1,90 @@
+body {
+    background: #414141;
+}
+
+header, footer {
+    background: #313131;
+}
+
+header {
+    margin-bottom: 3vh;
+    padding-bottom: 3vh;
+}
+
+header h1 {
+    text-align: center;
+    margin-top: 0px;
+    color: white;
+    padding-top: 3vh;
+    margin-bottom: 5vh;
+}
+
+header ul {
+    width: fit-content !important;
+    margin: 0 auto !important;
+    border: none;
+}
+
+header ul > li {
+    background: transparent !important;
+    border: none !important;
+    transition: .3s;
+}
+
+header ul > li > a {
+    color: white !important;
+    transition: .3s;
+}
+
+header ul > li.active {
+    color: #1ba1e2 !important;
+}
+
+header ul > li.active > a:not(.disabled), header ul > li:active > a:not(.disabled)  {
+    color: #1ba1e2 !important;
+}
+
+header ul > li > a.disabled {
+    color: grey !important;
+}
+
+.expand-title {
+    display: none !important;
+}
+
+button.hamburger {
+    position: absolute !important;
+    top: -35px !important;
+    right: 2vh !important;
+    width: 5vh !important;
+    height: 8vh !important;
+}
+
+button.hamburger:not(.active) > span {
+    width: 100% !important;
+    margin-bottom: calc(33.33% - 3px) !important;
+    height: 10% !important;
+}
+button.hamburger > span {
+    background: white !important;
+}
+
+.tabs {
+    border: none;
+    background: transparent;
+}
+
+main {
+    color: white;
+}
+
+@media screen and (min-width: 630px) {
+    header ul > li {
+        border-bottom: 2px solid silver !important;
+    }
+
+    header ul > li.active {
+        border-bottom: 2px solid #1ba1e2 !important;
+        color: #1ba1e2 !important;
+    }
+}

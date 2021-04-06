@@ -1,0 +1,38 @@
+h1 {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+main {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.tiles-grid > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tiles-grid > div > .branding-bar {
+    text-align: center;
+}
+
+.tiles-grid > div > .data {
+    font-size: 7vh;
+}
+
+#_dashboard {
+    width: auto;   
+}
+
+#_dashboard > div {
+    grid-template-columns: repeat(4, 70px) !important;
+}
+
+@media screen and (min-width: 630px) {
+    #_dashboard > div {
+        grid-template-columns: repeat(8, 70px) !important;
+    }
+}
